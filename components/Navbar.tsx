@@ -17,7 +17,9 @@ const Navbar: React.FC = () => {
   ];
 
   const isActive = (path: string) => {
-    if (path === '/' && location.pathname !== '/') return false;
+    if (path === '/') {
+      return location.pathname === '/' || location.pathname === '';
+    }
     return location.pathname.startsWith(path);
   };
 
@@ -42,20 +44,22 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-sm font-medium transition-colors duration-200 ${
+                className={`text-sm font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 rounded px-2 py-1 ${
                   isActive(link.path)
                     ? 'text-teal-600'
                     : 'text-slate-600 hover:text-teal-600'
                 }`}
+                aria-current={isActive(link.path) ? 'page' : undefined}
               >
                 {link.name}
               </Link>
             ))}
             <Link
               to="/contact"
-              className="flex items-center space-x-2 bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 rounded-full font-medium transition-colors shadow-sm"
+              className="flex items-center space-x-2 bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 rounded-full font-medium transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              aria-label={`Call us at ${PHONE_NUMBER}`}
             >
-              <Phone size={16} />
+              <Phone size={16} aria-hidden="true" />
               <span>{PHONE_NUMBER}</span>
             </Link>
           </nav>
@@ -80,11 +84,12 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block py-2 text-base font-medium ${
+                className={`block py-2 text-base font-medium focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-inset rounded px-2 ${
                   isActive(link.path)
                     ? 'text-teal-600'
                     : 'text-slate-600'
                 }`}
+                aria-current={isActive(link.path) ? 'page' : undefined}
               >
                 {link.name}
               </Link>
