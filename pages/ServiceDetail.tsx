@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Check, ArrowLeft, Calendar, Phone } from 'lucide-react';
+import SafeImage from '../components/SafeImage';
 import { SERVICES_DATA, PHONE_NUMBER } from '../constants';
 
 const ServiceDetail: React.FC = () => {
@@ -22,10 +23,11 @@ const ServiceDetail: React.FC = () => {
     <div className="min-h-screen bg-slate-50 pb-20">
       {/* Hero Banner */}
       <div className="relative h-80 lg:h-96 bg-slate-900">
-        <img 
+        <SafeImage 
           src={service.imageUrl} 
           alt={service.title} 
           className="w-full h-full object-cover opacity-40" 
+          fallbackColor="bg-slate-800"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
         <div className="absolute bottom-0 left-0 w-full p-8 lg:p-12">

@@ -1,4 +1,5 @@
 import React from 'react';
+import SafeImage from '../components/SafeImage';
 import { TEAM } from '../constants';
 
 const About: React.FC = () => {
@@ -40,10 +41,11 @@ const About: React.FC = () => {
               </ul>
             </div>
             <div className="relative">
-              <img 
+              <SafeImage 
                 src="https://images.unsplash.com/photo-1516307315259-22a89a039d91?auto=format&fit=crop&q=80&w=800" 
                 alt="Care workers and seniors laughing together" 
                 className="rounded-2xl shadow-xl w-full object-cover h-[500px]" 
+                fallbackColor="bg-slate-200"
               />
               <div className="absolute bottom-8 right-8 bg-white p-6 rounded-xl shadow-lg max-w-xs">
                 <p className="text-slate-800 font-medium italic">"We treat every client as if they were our own family member."</p>
@@ -65,7 +67,7 @@ const About: React.FC = () => {
             {TEAM.map(member => (
               <div key={member.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
                 <div className="h-64 overflow-hidden">
-                  <img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" />
+                  <SafeImage src={member.imageUrl} alt={member.name} className="w-full h-full object-cover" fallbackColor="bg-slate-200" />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-slate-900 mb-1">{member.name}</h3>

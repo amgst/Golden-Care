@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Star } from 'lucide-react';
 import ServiceCard from '../components/ServiceCard';
+import SafeImage from '../components/SafeImage';
 import { SERVICES_DATA, TAGLINE, TESTIMONIALS } from '../constants';
 
 const Home: React.FC = () => {
@@ -13,11 +14,12 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative bg-slate-900 text-white py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
+          <SafeImage 
             src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=1920" 
             alt="Compassionate caregiver providing warm, family-like care to senior person" 
             className="w-full h-full object-cover opacity-30" 
             loading="eager"
+            fallbackColor="bg-slate-800"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-transparent"></div>
         </div>
@@ -60,11 +62,12 @@ const Home: React.FC = () => {
             <div className="lg:w-1/2 relative">
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-teal-100 rounded-full z-0"></div>
               <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-yellow-50 rounded-full z-0"></div>
-              <img 
+              <SafeImage 
                 src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800" 
                 alt="Senior person living independently and actively, empowered to live their best life" 
                 className="relative z-10 rounded-2xl shadow-xl w-full" 
                 loading="lazy"
+                fallbackColor="bg-slate-200"
               />
             </div>
             <div className="lg:w-1/2">
@@ -135,11 +138,12 @@ const Home: React.FC = () => {
                 </div>
                 <p className="text-lg italic text-teal-50 mb-6 leading-relaxed">"{testimonial.quote}"</p>
                 <div className="flex items-center space-x-4">
-                  <img 
+                  <SafeImage 
                     src={testimonial.imageUrl} 
                     alt={`${testimonial.name}, ${testimonial.role}`} 
-                    className="w-12 h-12 rounded-full border-2 border-teal-500" 
+                    className="w-12 h-12 rounded-full border-2 border-teal-500 object-cover" 
                     loading="lazy"
+                    fallbackColor="bg-teal-600"
                   />
                   <div>
                     <h4 className="font-bold">{testimonial.name}</h4>

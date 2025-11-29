@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, User, Car, Home, Stethoscope, Users, Languages, ClipboardCheck, PlusCircle } from 'lucide-react';
+import SafeImage from './SafeImage';
 import { Service, ServiceCategory } from '../types';
 
 interface ServiceCardProps {
@@ -26,10 +27,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 overflow-hidden flex flex-col h-full group">
       <div className="relative h-48 overflow-hidden">
         <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-slate-900/0 transition-colors z-10" />
-        <img 
+        <SafeImage 
           src={service.imageUrl} 
           alt={service.title} 
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" 
+          fallbackColor="bg-slate-300"
         />
         <div className="absolute top-4 left-4 bg-teal-500 p-2.5 rounded-lg shadow-lg z-20">
           {getIconForCategory(service.category)}
